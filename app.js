@@ -44,14 +44,14 @@ app.get('*', (req, res) => {
 })
 // verificamos que podemos conectar a la base de datos y
 // si se conecta iniciamos el servidor express.
-conexion.connect((error) => {
-  if (error) {
-    console.log('no se puede conectar a la base de datos')
-  } else {
-   console.log('Conectado a la base de datos');
+// conexion.connect((error) => {
+//   if (error) {
+//     console.log('no se puede conectar a la base de datos')
+//   } else {
+//    console.log('Conectado a la base de datos');
     app.listen(PORT, () => {
       console.log(`Servidor API ejecutado en el puerto ${PORT}`)
     })
-  }
-});
+//   }
+// });
 
