@@ -1,21 +1,18 @@
 const express = require('express');
 const app = express();
 const logger = require('morgan');
-import {PORT,DB_HOST,
-  DB_NAME,
-  DB_PASSWORD,
-  DB_USER,
-  DB_PORT} from '../config/connectdb.js';
+
+const  DB = require('./config/connectdb');
 const conn = require('mysql2');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 
 const conexion = conn.createConnection({
-  host: DB_HOST ,
-  user: DB_USER,
-  database: DB_NAME,
-  port: DB_PORT,
-  password: DB_PASSWORD
+  host: DB.DB_HOST ,
+  user: DB.DB_USER,
+  database: DB.DB_NAME,
+  port: DB.DB_PORT,
+  password: DB.DB_PASSWORD
 });
 app.use(cors());
 app.use(logger('dev'));
