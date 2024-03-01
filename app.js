@@ -11,7 +11,7 @@ const conexion = conn.createConnection({
   user: 'root',
   password: 'c4BAc1Gd3FafG-BCfggge535C6A-cC6g',
   database: 'railway',
-  port:42219
+  port:'42219'
 });
 app.use(cors());
 app.use(logger('dev'));
