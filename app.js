@@ -2,17 +2,23 @@ const express = require('express');
 const app = express();
 const logger = require('morgan');
 
-const  DB = require('./config/connectdb');
+const PORT = process.env.PORT || 3000
+const DB_HOST = process.env.DB_HOST || 'localhost'
+const DB_USER = process.env.DB_USER || 'root'
+const DB_PASSWORD = process.env.DB_PASSWORD || ''
+const DB_NAME = process.env.DB_NAME || 'mydb'
+const DB_PORT = process.env.DB_PORT || 3306
+
 const conn = require('mysql2');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 
 const conexion = conn.createConnection({
-  host: DB.DB_HOST ,
-  user: DB.DB_USER,
-  database: DB.DB_NAME,
-  port: DB.DB_PORT,
-  password: DB.DB_PASSWORD
+  host: DB_HOST ,
+  user: DB_USER,
+  database: DB_NAME,
+  port: DB_PORT,
+  password: DB_PASSWORD
 });
 app.use(cors());
 app.use(logger('dev'));
