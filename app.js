@@ -1,17 +1,21 @@
 const express = require('express');
 const app = express();
 const logger = require('morgan');
-const port = 3000;
+import {PORT,DB_HOST,
+  DB_NAME,
+  DB_PASSWORD,
+  DB_USER,
+  DB_PORT} from '../config/connectdb.js';
 const conn = require('mysql2');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 
 const conexion = conn.createConnection({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT,
-  password: process.env.PASSWORD
+  host: DB_HOST ,
+  user: DB_USER,
+  database: DB_NAME,
+  port: DB_PORT,
+  password: DB_PASSWORD
 });
 app.use(cors());
 app.use(logger('dev'));
@@ -40,8 +44,8 @@ conexion.connect((error) => {
     console.log('no se puede conectar a la base de datos')
   } else {
    console.log('Conectado a la base de datos');
-    app.listen(port, () => {
-      console.log(`Servidor API ejecutado en el puerto ${port}`)
+    app.listen(PORT, () => {
+      console.log(`Servidor API ejecutado en el puerto ${PORT}`)
     })
   }
 });
