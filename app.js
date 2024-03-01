@@ -13,13 +13,8 @@ const conn = require('mysql2');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 
-const conexion = conn.createConnection({
-  host: DB_HOST ,
-  user: DB_USER,
-  database: DB_NAME,
-  port: DB_PORT,
-  password: DB_PASSWORD
-});
+const conexion = conn.createConnection(process.env.DB_URL);
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.urlencoded({extended:true}));
