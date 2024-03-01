@@ -7,10 +7,11 @@ const bodyParser = require('body-parser');
 const cors=require('cors');
 
 const conexion = conn.createConnection({
-  host: 'localhost',
+  host: 'monorail.proxy.rlwy.net',
   user: 'root',
-  password: '',
-  database: 'mydb'
+  password: 'c4BAc1Gd3FafG-BCfggge535C6A-cC6g',
+  database: 'railway',
+  port:42219
 });
 app.use(cors());
 app.use(logger('dev'));
