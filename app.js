@@ -8,10 +8,11 @@ const cors=require('cors');
 
 const conexion = conn.createConnection({
   host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
   user: process.env.MYSQLUSER,
   password: process.env.PASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT
+  database: process.env.MYSQLDATABASE
+
 });
 app.use(cors());
 app.use(logger('dev'));
