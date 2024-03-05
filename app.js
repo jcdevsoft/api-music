@@ -3,23 +3,20 @@ const app = express();
 const logger = require('morgan');
 require('dotenv').config()
 
-const PORT = process.env.PORT
-const DB_HOST = process.env.DB_HOST
-const DB_USER = process.env.DB_USER 
-const DB_PASSWORD = process.env.DB_PASSWORD
-const DB_NAME = process.env.DB_NAME
-const DB_PORT = process.env.DB_PORT
-
+const PORT = process.env.PORT;
 const conn = require('mysql2');
 const bodyParser = require('body-parser');
 const cors=require('cors');
 
+const conexion = conn.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+})
 // const conexion = conn.createConnection({
-//   host: DB_HOST ,
-//   user: DB_USER,
-//   database: DB_NAME,
-//   port: DB_PORT,
-//   password: DB_PASSWORD
+ 
 // });
 
 app.use(cors());
